@@ -39,7 +39,7 @@
 
 - (void)prepareData
 {
-	self.dataArray = @[@"horse_01.png"];//, @"horse_02.png", @"horse_03.png", @"horse_04.png"];
+	self.dataArray = @[@"horse_01.png", @"horse_02.png", @"horse_03.png", @"horse_04.png"];
 }
 
 - (void)prepareCollectionViewDelegate
