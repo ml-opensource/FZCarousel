@@ -60,7 +60,7 @@
 	[tmpDataArray addObjectsFromArray:inDataArray];
 	self.dataMultiplier = 3;
 	_dataArray = tmpDataArray.copy;
-	
+
 	[self.collectionView reloadData];
 }
 
@@ -167,6 +167,7 @@
 - (void)updatePageControl
 {
 	self.pageControl.numberOfPages = self.dataArray.count / self.dataMultiplier;
+	self.pageControl.hidden = (self.cycleLength < 2);
 }
 
 - (void)beginCarousel
@@ -223,8 +224,8 @@
 	{
 		if ([self.collectionView numberOfItemsInSection:0] > self.cycleLength)
 		{
-			[self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.cycleLength - 2 inSection:0]  atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
-			[self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:self.cycleLength - 1 inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
+			[self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:MAX(self.cycleLength - 2, 0) inSection:0]  atScrollPosition:UICollectionViewScrollPositionNone animated:NO];
+			[self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:MAX(1, self.cycleLength - 1) inSection:0] atScrollPosition:UICollectionViewScrollPositionNone animated:YES];
 		}
 	}
 }

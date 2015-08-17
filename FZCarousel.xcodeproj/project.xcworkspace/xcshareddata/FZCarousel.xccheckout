@@ -10,14 +10,14 @@
 	<string>FZCarousel</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>8951D2B1DFC745D91E4831129473AD7451D468C0</key>
+		<key>14D3542B6BFD95C44275689C8FE17C0EA895878E</key>
 		<string>gitlab.fuzzhq.com:ios-modules/fzcarouselcollectionviewdelegate.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>FZCarousel.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>8951D2B1DFC745D91E4831129473AD7451D468C0</key>
+		<key>14D3542B6BFD95C44275689C8FE17C0EA895878E</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>8951D2B1DFC745D91E4831129473AD7451D468C0</string>
+	<string>14D3542B6BFD95C44275689C8FE17C0EA895878E</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>8951D2B1DFC745D91E4831129473AD7451D468C0</string>
+			<string>14D3542B6BFD95C44275689C8FE17C0EA895878E</string>
 			<key>IDESourceControlWCCName</key>
 			<string>FZCarousel</string>
 		</dict>
