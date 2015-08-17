@@ -1,4 +1,4 @@
-# FZCarousel
+![FZCarousel](FZCarousel.png)
 
 ## Demo
 ![demo](FZCarouselDemo.gif)
