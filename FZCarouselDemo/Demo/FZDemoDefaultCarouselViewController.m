@@ -22,8 +22,7 @@
 	[self prepareCarousel];
 }
 
-- (void)prepareCarousel
-{
+- (void)prepareCarousel {
 	NSArray *imageArray = @[[UIImage imageNamed:@"horse_01.png"], [UIImage imageNamed:@"horse_02.png"], [UIImage imageNamed:@"horse_03.png"], [UIImage imageNamed:@"horse_04.png"]];
 	self.carouselView.imageArray = imageArray;
 	self.carouselView.crankInterval = 2.0f;

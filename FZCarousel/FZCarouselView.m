@@ -29,27 +29,25 @@
 
 @implementation FZCarouselView
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder
-{
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
 	if (self = [super initWithCoder:aDecoder]) {
 		[self setupCollectionView];
 	}
 	return self;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
 	self = [super initWithFrame:frame];
 	if (self) {
+		_crankInterval = 3.0f;
+		_gestureRecognitionShouldEndCarousel = false;
 		[self setupCollectionView];
-		self.gestureRecognitionShouldEndCarousel = false;
-		self.crankInterval = 3.0;
+		
 	}
 	return self;
 }
 
-- (void)setupCollectionView
-{
+- (void)setupCollectionView {
 	self.imageArray = [NSArray array];
 	
 	UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
@@ -63,52 +61,56 @@
 	NSArray *leftAndRight = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_collectionView]|" options:0 metrics:@{} views:views];
 	[self addConstraints:topAndBottom];
 	[self addConstraints:leftAndRight];
-}
-
-- (void)setImageArray:(NSArray<UIImage *> *)imageArray
-{
-	_imageArray = imageArray;
-}
-
-- (void)prepareCollectionViewDelegate
-{
+	
 	self.carouselCollectionViewDelegate = [FZDefaultCarouselCollectionViewDelegate carouselCollectionViewDelegateForCollectionView:self.collectionView dataArray:self.imageArray crankInterval:self.crankInterval];
+	self.carouselCollectionViewDelegate.lazyCrankInterval = self.crankInterval;
+}
+
+- (void)setImageArray:(NSArray<UIImage *> *)imageArray {
+	_imageArray = imageArray;
+	[self.carouselCollectionViewDelegate setDataArray:_imageArray];
+}
+
+- (void)setCrankInterval:(NSTimeInterval)crankInterval {
+	_crankInterval = crankInterval;
+	[self.carouselCollectionViewDelegate setDefaultCrankInterval:_crankInterval];
+	self.carouselCollectionViewDelegate.lazyCrankInterval = self.crankInterval;
+}
+
+- (void)setGestureRecognitionShouldEndCarousel:(BOOL)gestureRecognitionShouldEndCarousel {
+	_gestureRecognitionShouldEndCarousel = gestureRecognitionShouldEndCarousel;
 	self.carouselCollectionViewDelegate.gestureRecognitionShouldEndCarousel = self.gestureRecognitionShouldEndCarousel;
 }
 
-//- (void)setCrankInterval:(NSTimeInterval)crankInterval {
-//	_crankInterval = crankInterval;
-//	self.carouselCollectionViewDelegate.defaultCrankInterval = self.crankInterval;
-//}
-
-- (void)beginCarousel
-{
-	[self prepareCollectionViewDelegate];
+- (void)beginCarousel {
 	[self.carouselCollectionViewDelegate beginCarousel];
 }
-
-//- (void)setGestureRecognitionShouldEndCarousel:(BOOL)gestureRecognitionShouldEndCarousel {
-//	_gestureRecognitionShouldEndCarousel = gestureRecognitionShouldEndCarousel;
-//	self.carouselCollectionViewDelegate.gestureRecognitionShouldEndCarousel = self.gestureRecognitionShouldEndCarousel;
-//}
-
 
 @end
 
 
 
+/**
+ * @description FZDefaultCarouselCollectionViewDelegate is the default implementation of FZCarouselCollectionViewDelegate. It registers the default cell.
+ *
+ * @discussion Use it like a standard view with or without storyboard.
+ */
+
 static NSString *const FZDefaultCarouselCollectionViewCellIdentifier = @"FZDefaultCarouselCollectionViewCell";
 
 @implementation FZDefaultCarouselCollectionViewDelegate
 
-+ (instancetype)carouselCollectionViewDelegateForCollectionView:(UICollectionView *)inCollectionView dataArray:(NSArray *)inDataArray crankInterval:(NSTimeInterval)inCrankInterval
-{
++ (instancetype)carouselCollectionViewDelegateForCollectionView:(UICollectionView *)inCollectionView
+													  dataArray:(NSArray *)inDataArray
+												  crankInterval:(NSTimeInterval)inCrankInterval {
+	
 	[inCollectionView registerClass:[FZDefaultCarouselCollectionViewCell class] forCellWithReuseIdentifier:FZDefaultCarouselCollectionViewCellIdentifier];
 	return [super carouselCollectionViewDelegateForCollectionView:inCollectionView dataArray:inDataArray crankInterval:inCrankInterval];
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+				  cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+	
 	FZDefaultCarouselCollectionViewCell *rtnCell = (FZDefaultCarouselCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:FZDefaultCarouselCollectionViewCellIdentifier forIndexPath:indexPath];
 	
 	if (indexPath.row < _dataArray.count)
@@ -126,27 +128,22 @@ static NSString *const FZDefaultCarouselCollectionViewCellIdentifier = @"FZDefau
 
 @implementation FZDefaultCarouselCollectionViewCell
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder
-{
-	if (self = [super initWithCoder:aDecoder])
-	{
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+	if (self = [super initWithCoder:aDecoder]) {
 		[self setupImageView];
 	}
 	return self;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
 	self = [super initWithFrame:frame];
-	if (self)
-	{
+	if (self) {
 		[self setupImageView];
 	}
 	return self;
 }
 
-- (void)setupImageView
-{
+- (void)setupImageView {
 	self.imageView = [[UIImageView alloc] initWithFrame:CGRectZero];
 	[self.imageView setTranslatesAutoresizingMaskIntoConstraints: NO];
 	[self addSubview:self.imageView];
