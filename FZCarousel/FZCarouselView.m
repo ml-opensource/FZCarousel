@@ -7,25 +7,11 @@
 //
 
 #import "FZCarouselView.h"
-#import "FZCarouselCollectionViewDelegate.h"
-
-
-@interface FZDefaultCarouselCollectionViewDelegate : FZCarouselCollectionViewDelegate
-@end
 
 
 @interface FZDefaultCarouselCollectionViewCell : UICollectionViewCell
 @property (nonatomic, strong) UIImageView *imageView;
 @end
-
-
-@interface FZCarouselView()
-
-@property (strong, nonatomic) FZDefaultCarouselCollectionViewDelegate *carouselCollectionViewDelegate;
-@property (nonatomic, strong) UICollectionView *collectionView;
-
-@end
-
 
 @implementation FZCarouselView
 
