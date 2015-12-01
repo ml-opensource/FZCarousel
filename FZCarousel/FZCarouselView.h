@@ -22,8 +22,8 @@
 
 @interface FZCarouselView : UIView
 
-@property (strong, nonatomic) FZDefaultCarouselCollectionViewDelegate *carouselCollectionViewDelegate;
-@property (nonatomic, strong) UICollectionView *collectionView;
+@property (readonly, nonatomic) FZDefaultCarouselCollectionViewDelegate *carouselCollectionViewDelegate;
+@property (readonly, nonatomic) UICollectionView *collectionView;
 
 
 @property (nonatomic, strong) NSArray<UIImage *> *imageArray;
