@@ -7,25 +7,11 @@
 //
 
 #import "FZCarouselView.h"
-#import "FZCarouselCollectionViewDelegate.h"
-
-
-@interface FZDefaultCarouselCollectionViewDelegate : FZCarouselCollectionViewDelegate
-@end
 
 
 @interface FZDefaultCarouselCollectionViewCell : UICollectionViewCell
 @property (nonatomic, strong) UIImageView *imageView;
 @end
-
-
-@interface FZCarouselView()
-
-@property (strong, nonatomic) FZDefaultCarouselCollectionViewDelegate *carouselCollectionViewDelegate;
-@property (nonatomic, strong) UICollectionView *collectionView;
-
-@end
-
 
 @implementation FZCarouselView
 
@@ -52,7 +38,7 @@
 	
 	UICollectionViewFlowLayout *flowLayout = [UICollectionViewFlowLayout new];
 	[flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-	self.collectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:flowLayout];
+	_collectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:flowLayout];
 	[self.collectionView setTranslatesAutoresizingMaskIntoConstraints:NO];
 	[self.collectionView setShowsHorizontalScrollIndicator:NO];
 	[self addSubview:self.collectionView];
@@ -62,7 +48,7 @@
 	[self addConstraints:topAndBottom];
 	[self addConstraints:leftAndRight];
 	
-	self.carouselCollectionViewDelegate = [FZDefaultCarouselCollectionViewDelegate carouselCollectionViewDelegateForCollectionView:self.collectionView dataArray:self.imageArray crankInterval:self.crankInterval];
+	_carouselCollectionViewDelegate = [FZDefaultCarouselCollectionViewDelegate carouselCollectionViewDelegateForCollectionView:self.collectionView dataArray:self.imageArray crankInterval:self.crankInterval];
 	self.carouselCollectionViewDelegate.lazyCrankInterval = self.crankInterval;
 }
 

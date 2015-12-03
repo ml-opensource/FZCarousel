@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+#import "FZCarouselCollectionViewDelegate.h"
+
+
+@interface FZDefaultCarouselCollectionViewDelegate : FZCarouselCollectionViewDelegate
+@end
+
 /**
  * @description FZCarouselView is view with default implementation of FZCarouselCollectionViewDelegate that takes an array of images for an infinitely scrolling carousel.
  *
@@ -15,6 +21,10 @@
  */
 
 @interface FZCarouselView : UIView
+
+@property (readonly, nonatomic) FZDefaultCarouselCollectionViewDelegate *carouselCollectionViewDelegate;
+@property (readonly, nonatomic) UICollectionView *collectionView;
+
 
 @property (nonatomic, strong) NSArray<UIImage *> *imageArray;
 @property (nonatomic) BOOL gestureRecognitionShouldEndCarousel;
