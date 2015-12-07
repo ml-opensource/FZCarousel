@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BRc-sP-WYT">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
         <!--Demo View Controller-->
@@ -56,7 +57,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nea-8T-x0O" userLabel="didSelectLabel">
                                         <rect key="frame" x="5" y="5" width="40" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -90,6 +91,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="207" y="545"/>
+        </scene>
+        <!--Demo Default Carousel View Controller-->
+        <scene sceneID="i2d-QV-9Bw">
+            <objects>
+                <viewController id="BRc-sP-WYT" customClass="FZDemoDefaultCarouselViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Rou-bS-J4V"/>
+                        <viewControllerLayoutGuide type="bottom" id="Mec-RD-pQk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dIg-o2-ccH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PMx-nR-CGb" customClass="FZCarouselView">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="PMx-nR-CGb" firstAttribute="top" secondItem="Rou-bS-J4V" secondAttribute="bottom" id="YUU-Ly-rk8"/>
+                            <constraint firstAttribute="trailing" secondItem="PMx-nR-CGb" secondAttribute="trailing" id="cHC-mN-Q8i"/>
+                            <constraint firstItem="PMx-nR-CGb" firstAttribute="leading" secondItem="dIg-o2-ccH" secondAttribute="leading" id="cdv-8y-emA"/>
+                            <constraint firstItem="Mec-RD-pQk" firstAttribute="top" secondItem="PMx-nR-CGb" secondAttribute="bottom" id="vRj-Fq-b9T"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="carouselView" destination="PMx-nR-CGb" id="XQE-qq-HqX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DVl-AY-hkZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="953" y="545"/>
         </scene>
     </scenes>
 </document>
